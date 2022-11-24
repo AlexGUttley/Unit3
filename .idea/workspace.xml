@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7d73c09-fb0e-4320-afac-3fa0edb89cda" name="Changes" comment="Made exception handling more robust and made audit log work.">
+    <list default="true" id="a7d73c09-fb0e-4320-afac-3fa0edb89cda" name="Changes" comment="Fixed a dumb bug in the buy method that acted like only coke was in stock">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auditLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/auditLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/service/ServicesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/service/ServicesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669289181005</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed a dumb bug in the buy method that acted like only coke was in stock">
+      <created>1669290416621</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669290416621</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,16 +153,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="...I forgot to commit this until I was basically done. Implemented pretty much everything, from unit tests to java docs." />
     <MESSAGE value="Made exception handling more robust and made audit log work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made exception handling more robust and made audit log work." />
+    <MESSAGE value="Fixed a dumb bug in the buy method that acted like only coke was in stock" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a dumb bug in the buy method that acted like only coke was in stock" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Services.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java</url>
           <line>44</line>
