@@ -20,10 +20,17 @@ public class Controller {
     /**
      * Instantiates a new Controller.
      */
-    public Controller () {
+    public Controller () throws RuntimeException{
         databaseManager = new FileIO();
         ui = new CmdUserIO();
-        services = new Services(databaseManager.readStock());
+        try{
+            services = new Services(databaseManager.readStock());
+        } catch (Exception e) {
+            logIO("Failed to read from file.");
+            ui.reportError(e);
+            ui.goodbye();
+            throw new RuntimeException();
+        }
     }
 
     /**
@@ -33,7 +40,7 @@ public class Controller {
         if(ui.welcome(services.getInventoryReadout())){
             BigDecimal moneyToAdd = ui.addMoney();
             services.addMoney(moneyToAdd);
-            databaseManager.writeAuditLog(services.getSummary());
+            log();
             ui.confirmMoney(moneyToAdd, services.getMoney());
             try {
                 //To allow recognition of invalid IDs, exception throwing, and unsuccessful transactions, comment out line 31 below and uncomment line 32.
@@ -42,18 +49,37 @@ public class Controller {
 
                 //Pass the bought item and the change relevant back to the ui, where it can be displayed.
                 if (boughtItem != null) {
-                    databaseManager.writeAuditLog(services.getSummary());
+                    log();
                     ui.confirmPurchase(boughtItem, services.calculateChange());
-                    databaseManager.writeAuditLog(services.getSummary());
+                    log();
                 }
             } catch (Exception e){
                 ui.reportError(e, services.calculateChange());
-                databaseManager.writeAuditLog(services.getSummary());
+                log();
             }
             //Have the ui say goodbye.
             ui.goodbye();
-            databaseManager.writeStock(services.getInventory());
+            try{
+                databaseManager.writeStock(services.getInventory());
+            } catch (Exception ignored) {
+                logIO("Failed to write to file.");
+            }
         }
+    }
 
+    private void log(){ //Logs every event to the audit file. Reports any failure to the UI.
+        try{
+            databaseManager.writeAuditLog(services.getSummary());
+        } catch (Exception ignored) {
+            ui.reportAuditError();
+        }
+    }
+
+    private void logIO(String summary){ //Logs read/write operations to the audit file. Reports any failure to the UI.
+        try{
+            databaseManager.writeAuditLog(summary);
+        } catch (Exception ignored) {
+            ui.reportAuditError();
+        }
     }
 }

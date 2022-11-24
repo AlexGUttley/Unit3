@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import static java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME;
+import static java.time.format.DateTimeFormatter.ISO_DATE_TIME;
 
 /**
  * A local, file-based implementation of the DataIO interface.
@@ -22,7 +22,7 @@ public class FileIO implements DataIO {
      * @return the stock ArrayList
      */
     @Override
-    public ArrayList<Stock> readStock() {
+    public ArrayList<Stock> readStock() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
             reader.readLine();//reads twice to ensure the first line (categories) is not used
@@ -39,9 +39,10 @@ public class FileIO implements DataIO {
                 //inventory.add(new Stock(name, id, cost, stockAmount));
                 line = reader.readLine();
             }
+            writeAuditLog("Successfully read data from disk.");
             return inventory;
         } catch (IOException e) {
-            e.printStackTrace();
+            writeAuditLog("Reading from disk failed.");
         }
         return null;
     }
@@ -51,7 +52,7 @@ public class FileIO implements DataIO {
      * @param output Stock ArrayList to be written to storage.
      */
     @Override
-    public void writeStock(ArrayList<Stock> output) {
+    public void writeStock(ArrayList<Stock> output) throws IOException {
         try (PrintWriter pw = new PrintWriter(FILE_NAME)) {
          pw.println("Name, ID, Price, Stock Volume");
          for(Stock s : output) {
@@ -61,10 +62,8 @@ public class FileIO implements DataIO {
                              s.getStockAmount();
              pw.println(outputLine);
          }
-        } catch (Exception e){ //This might not be the way to do this thing. Reconsider.
-            System.out.println(e);
+         writeAuditLog("Writing to disk succeeded.");
         }
-
     }
 
     /**
@@ -72,11 +71,12 @@ public class FileIO implements DataIO {
      * @param summary A summary of the event to be logged.
      */
     @Override
-    public void writeAuditLog(String summary){
-        try (PrintWriter pw = new PrintWriter(AUDIT_LOG)) {
-            pw.append(LocalDateTime.now().format(RFC_1123_DATE_TIME)).append(": ").append(summary);
-        } catch (Exception ignored) {
-
+    public void writeAuditLog(String summary) throws IOException{
+        LocalDateTime time = LocalDateTime.now();
+        String out = time.format(ISO_DATE_TIME) + ": " + summary;
+        try (FileWriter fw = new FileWriter(AUDIT_LOG, true); BufferedWriter writer = new BufferedWriter(fw)) {
+            writer.newLine();
+            writer.write(out);
         }
     }
 }

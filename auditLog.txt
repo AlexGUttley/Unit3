@@ -1,0 +1,14 @@
+2022-11-24T11:15:50.8414095: Successfully read data from disk.
+2022-11-24T11:16:00.1138448: £4.99 was added to the balance. The current total is now £4.99
+2022-11-24T11:16:12.0319295: Coke was purchased for 2.00. The remaining balance is now £2.99
+2022-11-24T11:16:12.0344292: £2.99 was dispensed in the form of change.
+2022-11-24T11:16:12.0394288: Writing to disk succeeded.
+2022-11-24T11:16:21.44919: Successfully read data from disk.
+2022-11-24T11:16:33.1614805: £1.90 was added to the balance. The current total is now £1.90
+2022-11-24T11:16:38.9297243: £1.90 was dispensed in the form of change.
+2022-11-24T11:16:38.9352337: Writing to disk succeeded.
+2022-11-24T11:17:10.7420376: Successfully read data from disk.
+2022-11-24T11:21:57.1216236: Successfully read data from disk.
+2022-11-24T11:22:37.6190908: £1.00 was added to the balance. The current total is now £1.00
+2022-11-24T11:23:50.9879491: £1.00 was dispensed in the form of change.
+2022-11-24T11:23:50.993174: Writing to disk succeeded.

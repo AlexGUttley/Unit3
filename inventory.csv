@@ -1,7 +1,7 @@
 Name, ID, Price, Stock Volume
 Coke, 1, 2.00, 9
-Pepsi, 2, 1.80, 3
+Pepsi, 2, 1.80, 4
 Sprite, 3, 1.30, 0
-Fanta, 4, 2.40, 0
-Tango, 5, 1.10, 2
+Fanta, 4, 2.40, 1
+Tango, 5, 1.10, 3
 7up, 6, 0.10, 1000

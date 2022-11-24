@@ -11,8 +11,10 @@ public class App {
      * @param args Unused.
      */
     public static void main(String[] args) {
-        Controller main = new Controller();
-        main.start();
+        try {
+            Controller main = new Controller();
+            main.start();
+        } catch (Exception ignored) {}
     }
 
 }

@@ -58,6 +58,17 @@ public interface UserIO {
     void reportError (Exception e, Change[] change);
 
     /**
+     * Report a terminal error occurring before balance has been modified, where dispensation of change is not needed.
+     * @param e the exception thrown
+     */
+    void reportError (Exception e);
+
+    /**
+     * Report an error with the audit log to the user.
+     */
+    void reportAuditError ();
+
+    /**
      * Run at the end of the program, ends all UI processes.
      */
     void goodbye();

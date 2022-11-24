@@ -13,9 +13,10 @@ import java.util.Scanner;
 public class CmdUserIO implements UserIO {
 
     Scanner scanner = new Scanner(System.in);
+    boolean auditErrorThisSession;
 
     public CmdUserIO(){
-
+        auditErrorThisSession = false;
     }
 
     /**
@@ -62,7 +63,7 @@ public class CmdUserIO implements UserIO {
         String cleanMoney = "";
         boolean sanitary = false;
         while (!sanitary) {
-            System.out.println("Please specify the amount you wish to add to your balance, in pounds and pennies.");
+            System.out.println("Please specify the amount you wish to add to your balance, in pounds and pennies. (e.g. £5.00)");
             //Basic regex work; ensures all non-numeric character except '.' are removed, then checks it's in the right format.
             cleanMoney = scanner.nextLine().trim().replaceAll("[^0-9.]", "");
             if (cleanMoney.matches("[0-9]+\\.[0-9][0-9]")) {
@@ -151,6 +152,19 @@ public class CmdUserIO implements UserIO {
                         .replaceAll("coin ", "coin, ")
                         .replaceAll("note ", "note, ")
         );
+    }
+
+    @Override
+    public void reportError(Exception e){
+        System.out.println(e.getMessage());
+    }
+
+    public void reportAuditError() { //In more sophisticated implementations, this should probably terminate the program.
+        if (!auditErrorThisSession) {
+            System.out.println("There was an error when writing to the audit log.");
+            System.out.println("Transactions for the remainder of this session will not be recorded.");
+            auditErrorThisSession = true;
+        }
     }
 
     /**
