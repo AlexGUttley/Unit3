@@ -10,10 +10,19 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Services test.
+ */
 class ServicesTest {
 
+    /**
+     * The Inventory.
+     */
     ArrayList<Stock> inventory;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         inventory = new ArrayList<>();
@@ -22,6 +31,9 @@ class ServicesTest {
         inventory.add(new Stock("Sprite", 3, new BigDecimal("1.30"), 0));
     }
 
+    /**
+     * Gets inventory readout.
+     */
     @Test
     void getInventoryReadout() {
         Services services = new Services(inventory);
@@ -29,6 +41,9 @@ class ServicesTest {
         assertEquals("Pepsi, ID: 2, £1.80", readout.get(1));
     }
 
+    /**
+     * Gets inventory readout of stock.
+     */
     @Test
     void getInventoryReadoutOfStock() {
         Services services = new Services(inventory);
@@ -36,6 +51,9 @@ class ServicesTest {
         assertEquals("Sprite, ID: 3, £1.30 OUT OF STOCK", readout.get(2));
     }
 
+    /**
+     * Add and get money.
+     */
     @Test
     void addAndGetMoney() {
         Services services = new Services(inventory);
@@ -43,6 +61,9 @@ class ServicesTest {
         assertEquals(0, services.getMoney().compareTo(new BigDecimal("5.00")));
     }
 
+    /**
+     * Calculate change.
+     */
     @Test
     void calculateChange() {
         Services services = new Services(inventory);
@@ -51,6 +72,9 @@ class ServicesTest {
         assertArrayEquals(c, services.calculateChange());
     }
 
+    /**
+     * Buy.
+     */
     @Test
     void buy() {
         Services services = new Services(inventory);
@@ -58,6 +82,9 @@ class ServicesTest {
         assertEquals("Coke", services.buy(1));
     }
 
+    /**
+     * Gets valid i ds.
+     */
     @Test
     void getValidIDs() {
         Services services = new Services(inventory);
@@ -65,6 +92,9 @@ class ServicesTest {
         assertArrayEquals(expected, services.getValidIDs());
     }
 
+    /**
+     * Gets i ds.
+     */
     @Test
     void getIDs() {
         Services services = new Services(inventory);
@@ -72,6 +102,9 @@ class ServicesTest {
         assertArrayEquals(expected, services.getIDs());
     }
 
+    /**
+     * Gets inventory.
+     */
     @Test
     void getInventory() {
         Services services = new Services(inventory);

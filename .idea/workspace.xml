@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7d73c09-fb0e-4320-afac-3fa0edb89cda" name="Changes" comment="...I forgot to commit this until I was basically done. Implemented pretty much everything, from unit tests to java docs.">
+    <list default="true" id="a7d73c09-fb0e-4320-afac-3fa0edb89cda" name="Changes" comment="Made exception handling more robust and made audit log work.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auditLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/auditLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/inventory.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/DataIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/DataIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/FileIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/CmdUserIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/CmdUserIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/UserIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/UserIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/service/ServicesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/service/ServicesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669229452905</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Made exception handling more robust and made audit log work.">
+      <created>1669289181005</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669289181005</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,7 +148,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="...I forgot to commit this until I was basically done. Implemented pretty much everything, from unit tests to java docs." />
-    <option name="LAST_COMMIT_MESSAGE" value="...I forgot to commit this until I was basically done. Implemented pretty much everything, from unit tests to java docs." />
+    <MESSAGE value="Made exception handling more robust and made audit log work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made exception handling more robust and made audit log work." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -157,9 +160,9 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/dao/FileIO.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -75,16 +75,18 @@ public class Services {
     public String buy (int ID) throws RuntimeException{
         for(Stock s : inventory) {
             if (s.getID() == ID) {
-                if(s.getCost().compareTo(money) <= 0) {
-                    money = money.subtract(s.getCost());
-                    s.reduceStock();
-                    summary = (s.getName() + " was purchased for " + s.getCost() + ". The remaining balance is now £" + money);
-                    return s.getName();
+                if (s.getStockAmount() > 0) {
+                    if (s.getCost().compareTo(money) <= 0) {
+                        money = money.subtract(s.getCost());
+                        s.reduceStock();
+                        summary = (s.getName() + " was purchased for " + s.getCost() + ". The remaining balance is now £" + money);
+                        return s.getName();
+                    } else {
+                        throw new InsufficientFundsException("You do not have enough money to complete this transaction.");
+                    }
                 } else {
-                    throw new InsufficientFundsException("You do not have enough money to complete this transaction.");
+                    throw new NoItemInventoryException("No products with that ID are currently in stock.");
                 }
-            } else {
-                throw new NoItemInventoryException("No products with that ID are currently in stock.");
             }
         }
         return null;

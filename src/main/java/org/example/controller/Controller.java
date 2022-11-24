@@ -43,7 +43,7 @@ public class Controller {
             log();
             ui.confirmMoney(moneyToAdd, services.getMoney());
             try {
-                //To allow recognition of invalid IDs, exception throwing, and unsuccessful transactions, comment out line 31 below and uncomment line 32.
+                //To allow recognition of invalid IDs, exception throwing, and unsuccessful transactions, comment out line 47 below and uncomment line 48.
                 String boughtItem = services.buy(ui.offerPurchase(services.getValidIDs()));
                 //String boughtItem = services.buy(ui.offerPurchase(services.getIDs()));
 
